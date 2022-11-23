@@ -1,0 +1,188 @@
+[
+	{
+		"Expansion": "ARR",
+		"ID": 28,
+		"Icon": "https://xivapi.com/i/068000/068016.png",
+		"Name": "aithon"
+	},
+	{
+		"Expansion": "ARR",
+		"ID": 29,
+		"Icon": "https://xivapi.com/i/068000/068017.png",
+		"Name": "xanthos"
+	},
+	{
+		"Expansion": "ARR",
+		"ID": 30,
+		"Icon": "https://xivapi.com/i/068000/068018.png",
+		"Name": "gullfaxi"
+	},
+	{
+		"Expansion": "ARR",
+		"ID": 31,
+		"Icon": "https://xivapi.com/i/068000/068019.png",
+		"Name": "enbarr"
+	},
+	{
+		"Expansion": "ARR",
+		"ID": 40,
+		"Icon": "https://xivapi.com/i/068000/068027.png",
+		"Name": "markab"
+	},
+	{
+		"Expansion": "ARR",
+		"ID": 43,
+		"Icon": "https://xivapi.com/i/068000/068029.png",
+		"Name": "boreas"
+	},
+	{
+		"Expansion": "HW",
+		"ID": 75,
+		"Icon": "https://xivapi.com/i/068000/068054.png",
+		"Name": "white lanner"
+	},
+	{
+		"Expansion": "HW",
+		"ID": 76,
+		"Icon": "https://xivapi.com/i/068000/068055.png",
+		"Name": "rose lanner"
+	},
+	{
+		"Expansion": "HW",
+		"ID": 77,
+		"Icon": "https://xivapi.com/i/068000/068056.png",
+		"Name": "round lanner"
+	},
+	{
+		"Expansion": "HW",
+		"ID": 78,
+		"Icon": "https://xivapi.com/i/068000/068057.png",
+		"Name": "warring lanner"
+	},
+	{
+		"Expansion": "HW",
+		"ID": 90,
+		"Icon": "https://xivapi.com/i/068000/068065.png",
+		"Name": "dark lanner"
+	},
+	{
+		"Expansion": "HW",
+		"ID": 98,
+		"Icon": "https://xivapi.com/i/068000/068071.png",
+		"Name": "Sophic lanner"
+	},
+	{
+		"Expansion": "HW",
+		"ID": 104,
+		"Icon": "https://xivapi.com/i/068000/068077.png",
+		"Name": "Demonic lanner"
+	},
+	{
+		"Expansion": "STB",
+		"ID": 115,
+		"Icon": "https://xivapi.com/i/068000/068087.png",
+		"Name": "blissful kamuy"
+	},
+	{
+		"Expansion": "STB",
+		"ID": 116,
+		"Icon": "https://xivapi.com/i/068000/068088.png",
+		"Name": "reveling kamuy"
+	},
+	{
+		"Expansion": "STB",
+		"ID": 133,
+		"Icon": "https://xivapi.com/i/068000/068101.png",
+		"Name": "legendary kamuy"
+	},
+	{
+		"Expansion": "STB",
+		"ID": 144,
+		"Icon": "https://xivapi.com/i/068000/068110.png",
+		"Name": "auspicious kamuy"
+	},
+	{
+		"Expansion": "STB",
+		"ID": 158,
+		"Icon": "https://xivapi.com/i/068000/068127.png",
+		"Name": "lunar kamuy"
+	},
+	{
+		"Expansion": "STB",
+		"ID": 172,
+		"Icon": "https://xivapi.com/i/068000/068130.png",
+		"Name": "euphonious kamuy"
+	},
+	{
+		"Expansion": "STB",
+		"ID": 182,
+		"Icon": "https://xivapi.com/i/068000/068142.png",
+		"Name": "hallowed kamuy"
+	},
+	{
+		"Expansion": "SHB",
+		"ID": 189,
+		"Icon": "https://xivapi.com/i/068000/068148.png",
+		"Name": "fae gwiber"
+	},
+	{
+		"Expansion": "SHB",
+		"ID": 192,
+		"Icon": "https://xivapi.com/i/068000/068153.png",
+		"Name": "innocent gwiber"
+	},
+	{
+		"Expansion": "SHB",
+		"ID": 205,
+		"Icon": "https://xivapi.com/i/068000/068163.png",
+		"Name": "shadow gwiber"
+	},
+	{
+		"Expansion": "SHB",
+		"ID": 217,
+		"Icon": "https://xivapi.com/i/068000/068170.png",
+		"Name": "ruby gwiber"
+	},
+	{
+		"Expansion": "SHB",
+		"ID": 226,
+		"Icon": "https://xivapi.com/i/068000/068181.png",
+		"Name": "gwiber of light"
+	},
+	{
+		"Expansion": "SHB",
+		"ID": 238,
+		"Icon": "https://xivapi.com/i/068000/068192.png",
+		"Name": "emerald gwiber"
+	},
+	{
+		"Expansion": "SHB",
+		"ID": 249,
+		"Icon": "https://xivapi.com/i/068000/068209.png",
+		"Name": "diamond gwiber"
+	},
+	{
+		"Expansion": "EW",
+		"ID": 261,
+		"Icon": "https://xivapi.com/i/068000/068214.png",
+		"Name": "lynx of eternal darkness"
+	},
+	{
+		"Expansion": "EW",
+		"ID": 262,
+		"Icon": "https://xivapi.com/i/068000/068215.png",
+		"Name": "lynx of divine light"
+	},
+	{
+		"Expansion": "EW",
+		"ID": 293,
+		"Icon": "https://xivapi.com/i/068000/068233.png",
+		"Name": "bluefeather lynx"
+	},
+	{
+		"Expansion": "EW",
+		"ID": 306,
+		"Icon": "https://xivapi.com/i/068000/068242.png",
+		"Name": "lynx of imperious wind"
+	}
+]
