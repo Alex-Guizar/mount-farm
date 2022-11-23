@@ -94,11 +94,9 @@ function updateMembers() {
 app.use(bodyParser.json());
 app.use(express.static(process.cwd() + '/my-app/dist'));
 
-// schedule.scheduleJob("* */5 * * * *", function() {
-//   updateMembers();
-// });
-
-updateMembers();
+schedule.scheduleJob("* */5 * * * *", function() {
+  updateMembers();
+});
 
 app.get('/api/updateMembers', (req, apiRes) => {
   console.log('Update Members!');
