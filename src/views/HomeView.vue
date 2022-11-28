@@ -159,9 +159,8 @@ export default defineComponent({
     <img
       alt="Vue logo"
       class="logo"
-      src="@/assets/uwux300.png"
-      width="125"
-      height="125"
+      src="@/assets/UwU.svg"
+      width="250"
     />
 
     <div class="ml-auto">
