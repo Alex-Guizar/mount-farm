@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-zinc-900;
+  }
+}
+
 #app {
   width: 100%;
   margin: 0 auto;
