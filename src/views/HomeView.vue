@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import LogoSVG from '@/assets/UwULogo.vue';
 import TrackedMounts from '@/json/TrackedMounts.json';
 import MemberInfo from '@/json/MemberInfo.json';
 import Dropdown from '@/components/Dropdown.vue';
@@ -28,6 +29,7 @@ interface MountArr extends Array<Mount>{};
 
 export default defineComponent({
   components: {
+    LogoSVG,
     Dropdown,
     Checkbox,
     TableRow,
@@ -156,12 +158,13 @@ export default defineComponent({
 
 <template>
   <header class="flex items-center pt-4">
-    <img
+    <!-- <img
       alt="Vue logo"
       class="logo"
-      src="@/assets/UwU.svg"
+      src="@/assets/UwUNoBlur.svg"
       width="250"
-    />
+    /> -->
+    <LogoSVG />
 
     <div class="ml-auto">
       <div>Top 3 Needed Mounts</div>

@@ -1,7 +1,11 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
+import DownChevron from '@/assets/DownChevron.vue';
 
 export default defineComponent({
+	components: {
+		DownChevron
+	},
 	props: {
 		describer: {
 			default: "Select Options",
@@ -41,7 +45,10 @@ export default defineComponent({
 
 <template>  
 	<div ref="dropdown" class="relative">
-		<button @click="toggle">{{ describer }}</button>
+		<button 
+			@click="toggle"
+			class="border border-slate-100 rounded py-1 px-3"
+		>{{ describer }} <DownChevron class="w-4 h-4 ml-2" /></button>
 		<ul
 			v-show="showDropdown"
 			class="absolute top-full bg-zinc-800 z-10 border border-zinc-600 rounded max-h-[25rem] overflow-auto whitespace-nowrap"

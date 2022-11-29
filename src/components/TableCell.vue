@@ -1,7 +1,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
+import CheckMark from '@/assets/CheckMark.vue';
 
 export default defineComponent({
+	components: {
+		CheckMark
+	},
 	props: {
 		index: {
 			default: 0,
@@ -27,10 +31,6 @@ export default defineComponent({
 		v-if="expansionVisible"
 		class="text-center h-8 border-l border-r border-zinc-600"
 	>
-		<span v-if="hasMount"><img
-      alt="Obtained"
-      class="w-6 m-auto"
-      src="@/assets/green-check.svg"
-    /></span>
+		<span v-if="hasMount"><CheckMark class="w-6 h-6" /></span>
 	</td>
 </template>
