@@ -1,0 +1,64 @@
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { createPopper } from '@popperjs/core';
+
+export default defineComponent({
+	props: {
+		index: {
+			default: 0,
+			type: Number
+		},
+		mountVisible: {
+			default: true,
+			type: Boolean
+		},
+		mount: {
+			default: {},
+			type: Object
+		}
+	},
+	data() {
+		return {
+			popoverShow: false
+		}
+	},
+	watch: {
+		popoverShow(popoverShow) {
+			if (popoverShow) {
+				document.addEventListener('click', this.closeIfClickedOutside);
+			} else {
+				document.removeEventListener('click', this.closeIfClickedOutside);
+			}
+		}
+	},
+	methods: {
+		togglePopover: function() {
+			this.popoverShow = !this.popoverShow;
+			if (this.popoverShow) {
+				createPopper(this.$refs.mountRef, this.$refs.popoverRef, {
+					placement: "bottom"
+				});
+			}
+		},
+		closeIfClickedOutside(e: any) {
+			const mountRef: any = this.$refs.mountRef;
+
+			if (!mountRef.contains(e.target)) {
+				this.popoverShow = false;
+			}
+		}
+	}
+});
+</script>
+
+<template>  
+	<th
+		v-if="mountVisible"
+		class="p-1"
+	>
+		<a href="#" ref="mountRef" @click="togglePopover()">
+			<img :src="mount.Icon" :alt="mount.Name" :title="mount.Name" class="w-[3rem] max-w-[3rem]">
+		</a>
+		<div ref="popoverRef" :class="{'hidden': !popoverShow, 'block': popoverShow}" role="tooltip" class="bg-zinc-800 border border-zinc-600 rounded z-10"><img :src="mount.Icon" :alt="mount.Name" :title="mount.Name" class="w-[12rem] max-w-[12rem]"></div>
+	</th>
+</template>

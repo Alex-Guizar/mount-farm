@@ -5,6 +5,7 @@ import TrackedMounts from '@/json/TrackedMounts.json';
 import MemberInfo from '@/json/MemberInfo.json';
 import Dropdown from '@/components/Dropdown.vue';
 import Checkbox from '@/components/Checkbox.vue';
+import TableHeadCell from '@/components/TableHeadCell.vue';
 import TableRow from '@/components/TableRow.vue';
 import TableCell from '@/components/TableCell.vue';
 
@@ -32,6 +33,7 @@ export default defineComponent({
     LogoSVG,
     Dropdown,
     Checkbox,
+    TableHeadCell,
     TableRow,
     TableCell
   },
@@ -236,17 +238,12 @@ export default defineComponent({
         <table class="table-auto">
           <thead>
             <tr>
-              <template
+              <TableHeadCell
                 v-for="mount in trackedMounts"
                 :key="mount.ID"
-              >
-                <th
-                  v-if="!selectedExpansions.length || expansionVisible(mount)"
-                  class="p-1"
-                >
-                  <img :src="mount.Icon" :alt="mount.Name" :title="mount.Name" class="w-[3rem] max-w-[3rem]">
-                </th>
-              </template>
+                :mountVisible="!selectedExpansions.length || expansionVisible(mount)"
+                :mount="mount"
+              />
             </tr>
           </thead>
           <tbody>
