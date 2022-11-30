@@ -183,7 +183,7 @@ export default defineComponent({
   </header>
 
   <main class="pb-20">
-    <div class="mt-10 flex">
+    <div class="mt-8 flex">
       <div>
         <Dropdown describer="Select Members">
           <li class="border-b border-zinc-600"><button @click="resetMembers" class="w-full text-left px-4 py-1">Reset</button></li>
@@ -217,7 +217,7 @@ export default defineComponent({
       </div>
     </div>
 
-    <div class="mt-4 flex w-full">
+    <div class="mt-8 flex w-full">
       <div class="flex-none">
         <div class="h-14 pl-2 flex items-center text-xl">Mounts</div>
         <template
@@ -259,6 +259,7 @@ export default defineComponent({
               <TableCell 
                 v-for="mount in trackedMounts"
                 :key="mount.ID"
+                :expansion="mount.Expansion"
                 :expansionVisible="!selectedExpansions.length || expansionVisible(mount)"
                 :hasMount="matchValues(member.Mounts, mount.Name)"
               />

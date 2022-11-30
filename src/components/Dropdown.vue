@@ -20,10 +20,8 @@ export default defineComponent({
 	watch: {
 		showDropdown(showDropdown) {
 			if (showDropdown) {
-				console.log("add listener");
 				document.addEventListener('click', this.closeIfClickedOutside);
 			} else {
-				console.log("remove listener");
 				document.removeEventListener('click', this.closeIfClickedOutside);
 			}
 		}
@@ -47,7 +45,7 @@ export default defineComponent({
 	<div ref="dropdown" class="relative">
 		<button 
 			@click="toggle"
-			class="border border-slate-100 rounded py-1 px-3"
+			class="border border-slate-100 rounded py-1 px-3 flex items-center"
 		>{{ describer }} <DownChevron class="w-4 h-4 ml-2" /></button>
 		<ul
 			v-show="showDropdown"
