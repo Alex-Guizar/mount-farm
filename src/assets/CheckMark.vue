@@ -13,6 +13,6 @@
 		display: inline-block;
 	}
 	.CheckMark path {
-		fill: #34b233;
+		fill: #00ff00;
 	}
 </style>

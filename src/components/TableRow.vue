@@ -19,7 +19,7 @@ export default defineComponent({
 </script>
 
 <template>  
-	<tr :class="{ 'bg-zinc-800': index % 2 }" v-if="memberVisible">
+	<tr class="hover:bg-[rgb(49,55,68)]" :class="{ 'bg-zinc-800': index % 2 }" v-if="memberVisible">
 		<slot></slot>
 	</tr>
 </template>
