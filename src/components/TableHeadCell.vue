@@ -34,10 +34,16 @@ export default defineComponent({
 	methods: {
 		togglePopover: function() {
 			this.popoverShow = !this.popoverShow;
-			if (this.popoverShow) {
-				createPopper(this.$refs.mountRef, this.$refs.popoverRef, {
-					placement: "bottom"
-				});
+			const mountedRef: any = this.$refs.mountRef;
+			const popoverRef: any = this.$refs.popoverRef;
+			if (mountedRef) {
+				if (this.popoverShow) {
+					if (this.$refs.mountRef) {
+						createPopper(mountedRef, popoverRef, {
+							placement: "bottom"
+						});
+					}
+				}
 			}
 		},
 		closeIfClickedOutside(e: any) {
