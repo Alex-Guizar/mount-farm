@@ -24,6 +24,11 @@ export default defineComponent({
 			type: Boolean
 		}
 	},
+	data() {
+		return {
+			mountCheck: this.hasMount
+		}
+	},
 	computed: {
 		bgColor() {
 			return {
@@ -35,6 +40,11 @@ export default defineComponent({
 			};
 		}
 	},
+	methods: {
+		addCheck() {
+			this.mountCheck = true;
+		}
+	},
   created() {
 		this.$emit('created');
 	}
@@ -44,9 +54,10 @@ export default defineComponent({
 <template>  
 	<td
 		v-if="expansionVisible"
-		class="text-center h-8 border-l border-r border-zinc-600"
+		class="text-center h-8 border-l border-r border-zinc-600 cursor-pointer"
 		:class="bgColor"
+		@click="addCheck"
 	>
-		<span v-if="hasMount"><CheckMark class="w-6 h-6" /></span>
+		<span v-if="mountCheck"><CheckMark class="w-6 h-6" /></span>
 	</td>
 </template>
