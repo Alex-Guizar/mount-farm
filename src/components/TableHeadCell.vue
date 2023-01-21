@@ -52,6 +52,13 @@ export default defineComponent({
 			if (!mountRef.contains(e.target)) {
 				this.popoverShow = false;
 			}
+		},
+		capitalizeName(name: string) {
+			const nameArr = name.split(" ");
+			const capArr = nameArr.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+			const capName = capArr.join(" ");
+			console.log(capName);
+			return capName;
 		}
 	}
 });
@@ -63,8 +70,16 @@ export default defineComponent({
 		class="p-1"
 	>
 		<a href="#" ref="mountRef" @click="togglePopover()">
-			<img :src="mount.Icon" :alt="mount.Name" :title="mount.Name" class="w-[3rem] max-w-[3rem]">
+			<img :src="mount.Icon" :alt="capitalizeName(mount.Name)" :title="capitalizeName(mount.Name)" class="w-[3rem] max-w-[3rem]">
 		</a>
-		<div ref="popoverRef" :class="{'hidden': !popoverShow, 'block': popoverShow}" role="tooltip" class="bg-zinc-800 border border-zinc-600 rounded z-10"><img :src="mount.Icon" :alt="mount.Name" :title="mount.Name" class="w-[12rem] max-w-[12rem]"></div>
+		<div 
+			ref="popoverRef" 
+			:class="{'hidden': !popoverShow, 'block': popoverShow}" 
+			role="tooltip" 
+			class="bg-zinc-800 border border-zinc-600 rounded z-10 p-2"
+		>
+			<img :src="mount.Icon" :alt="mount.Name" :title="mount.Name" class="w-[12rem] max-w-[12rem]">
+			<div class="text-base">{{ capitalizeName(mount.Name) }}</div>
+		</div>
 	</th>
 </template>

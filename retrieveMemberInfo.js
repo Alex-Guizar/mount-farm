@@ -2,7 +2,9 @@
 const fs = require('fs');
 const axios = require('axios');
 const honoraryMembers = [
-  "Seiken Kyu"
+  "Seiken Kyu",
+  "Brockodile Dundee",
+  "Brockness Monster"
 ]
 
 async function retrieveHonoraryData(charName) {
