@@ -1,6 +1,22 @@
 //const schedule = require('node-schedule');
 const fs = require('fs');
 const axios = require('axios');
+const honoraryMembers = [
+  "Seiken Kyu"
+]
+
+async function retrieveHonoraryData(charName) {
+  const response = await axios.get('https://xivapi.com/character/search?name=' + charName + '&server=Zalera');
+
+  if (!response.statusText) {
+		const message = `An error has occured: ${response.status}`;
+
+		throw new Error(message);
+	}
+
+	const honorData = await response.data.Results[0];
+	return honorData;
+}
 
 async function retrieveFcData() {
   const response = await axios.get('https://xivapi.com/freecompany/9229142273877455434?data=FCM');
@@ -31,7 +47,7 @@ async function retrieveCharData(charID) {
 function updateMembers() {
   const fcMembers = [];
   const fcData = retrieveFcData();
-  fcData.then(res => {
+  fcData.then(async res => {
     //console.log(res);
     res.FreeCompanyMembers.forEach((member) => {
       const fcMember = {};
@@ -39,6 +55,14 @@ function updateMembers() {
       fcMember.ID = member.ID;
       fcMembers.push(fcMember);
     });
+
+    await Promise.all(honoraryMembers.map(async (member) => {
+      const honoraryData = await retrieveHonoraryData(member);
+      const honoraryMember = {};
+      honoraryMember.name = honoraryData.Name;
+      honoraryMember.ID = honoraryData.ID;
+      fcMembers.push(honoraryMember);
+    }));
 
     const finished = new Promise((resolve, reject) => {
       let i = 0;
