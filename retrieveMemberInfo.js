@@ -50,7 +50,6 @@ function updateMembers() {
   const fcMembers = [];
   const fcData = retrieveFcData();
   fcData.then(async res => {
-    //console.log(res);
     res.FreeCompanyMembers.forEach((member) => {
       const fcMember = {};
       fcMember.name = member.Name;
@@ -71,8 +70,8 @@ function updateMembers() {
       setTimeout(function run() {
         const memberData = retrieveCharData(fcMembers[i].ID);
         memberData.then(res => {
-          console.log(res.Character.Name);
           fcMembers[i].Mounts = res.Mounts;
+          fcMembers[i].Minions = res.Minions;
           if (i < fcMembers.length - 1) {
             i++;
             setTimeout(run, 1000);
@@ -89,7 +88,6 @@ function updateMembers() {
 
     finished.then((res) => {
       console.log('API Calls Finished!');
-      //console.log(fcMembers);
       const jsonContent = JSON.stringify(fcMembers);
       fs.writeFile('./src/json/MemberInfo.json', jsonContent, err => {
         if (err) {

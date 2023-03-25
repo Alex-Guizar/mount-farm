@@ -101,7 +101,6 @@ function sortMounts(a, b) {
 function updateMounts() {
   const mountData = retrieveMountData();
   mountData.then(res => {
-    //console.log(res);
 		const filteredArr = res.filter((mount) => !blackList.includes(mount.Name.toLowerCase()));
 		const finishedData = buildData(filteredArr);
 		finishedData.sort(sortMounts);
