@@ -118,7 +118,8 @@ export default defineComponent({
 			Promise.all(requests).then((resp: any) => {
 				const minonsWListings = this.attachListings(resp);
 
-				this.trackedMinions = minonsWListings;
+				const sortedMinions = this.sort(minonsWListings);
+				this.missingMinions = sortedMinions;
 			});
 		},
 		attachListings(listingsData: any) {
@@ -153,6 +154,13 @@ export default defineComponent({
 					>{{ member.name }}</button>
 				</li>
 			</Dropdown>
+
+			<div class="ml-10">
+				<button 
+					@click="updateListings"
+					class="border border-slate-100 rounded py-1 px-3 flex items-center"
+				>Update Listings</button>
+			</div>
 		</div>
 		<div class="mt-8 flex w-full">
 			<div>

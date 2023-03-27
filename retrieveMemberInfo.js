@@ -70,6 +70,7 @@ function updateMembers() {
       setTimeout(function run() {
         const memberData = retrieveCharData(fcMembers[i].ID);
         memberData.then(res => {
+          console.log(res.Character.Name);
           fcMembers[i].Mounts = res.Mounts;
           fcMembers[i].Minions = res.Minions;
           if (i < fcMembers.length - 1) {
