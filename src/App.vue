@@ -1,8 +1,16 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import LogoSVG from '@/assets/UwULogo.vue';
 </script>
 
 <template>
+  <header class="flex items-center pt-4">
+    <LogoSVG />
+    <nav class="ml-auto">
+      <RouterLink to="/">To Mount Tracking</RouterLink>
+      <RouterLink to="/minions">To Minion Listings</RouterLink>
+    </nav>
+  </header>
   <RouterView />
 </template>
 

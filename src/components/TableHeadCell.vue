@@ -57,7 +57,6 @@ export default defineComponent({
 			const nameArr = name.split(" ");
 			const capArr = nameArr.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 			const capName = capArr.join(" ");
-			console.log(capName);
 			return capName;
 		}
 	}

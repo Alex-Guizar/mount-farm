@@ -139,17 +139,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <header class="flex items-center pt-4">
-    <LogoSVG />
-
-		<div class="ml-auto">
-			<button 
-				class="border border-slate-100 rounded py-1 px-3 flex items-center"
-				@click="updateListings"
-			>Get Prices</button>
-		</div>
-  </header>
-
   <main class="pb-20">
 		<div class="mt-8 flex">
 			<Dropdown :describer="selectedMember ? selectedMember.name : 'Select Members'">

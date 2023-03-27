@@ -159,30 +159,20 @@ export default defineComponent({
 </script>
 
 <template>
-  <header class="flex items-center pt-4">
-    <!-- <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/UwUNoBlur.svg"
-      width="250"
-    /> -->
-    <LogoSVG />
-
-    <div class="ml-auto">
-      <div>Top 3 Needed Mounts</div>
-      <div class="flex">
-        <div
-          class="flex items-end ml-4"
-          v-for="(mount, index) in neededMounts.slice(0, 3)"
-        >
-          <span class="align-bottom">{{ index + 1 }}.</span>
-          <span v-if="mount.Missing > 0" class="w-20">
-            <img :src="mount.Icon" :alt="mount.Name" :title="mount.Name" class="w-20">
-          </span>
-        </div>
+  <div>
+    <div>Top 3 Needed Mounts</div>
+    <div class="flex">
+      <div
+        class="flex items-end ml-4"
+        v-for="(mount, index) in neededMounts.slice(0, 3)"
+      >
+        <span class="align-bottom">{{ index + 1 }}.</span>
+        <span v-if="mount.Missing > 0" class="w-20">
+          <img :src="mount.Icon" :alt="mount.Name" :title="mount.Name" class="w-20">
+        </span>
       </div>
     </div>
-  </header>
+  </div>
 
   <main class="pb-20">
     <div class="mt-8 flex">
