@@ -86,7 +86,7 @@ export default defineComponent({
 			return sortedArr;
 		},
 		normalizeText(text: string) {
-			return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+			return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 		},
 		selectMember(member: Member) {
 			this.selectedMember = member;
