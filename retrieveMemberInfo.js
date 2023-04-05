@@ -4,7 +4,8 @@ const axios = require('axios');
 const honoraryMembers = [
   "Seiken Kyu",
   "Brockodile Dundee",
-  "Brockness Monster"
+  "Brockness Monster",
+  "Silk Redarse"
 ]
 
 async function retrieveHonoraryData(charName) {
