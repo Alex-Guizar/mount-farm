@@ -174,8 +174,8 @@ export default defineComponent({
     </div>
   </div>
 
-  <main class="pb-20">
-    <div class="mt-8 flex">
+  <main class="pb-20 grow">
+    <div class="pt-8 flex">
       <div>
         <Dropdown describer="Select Members">
           <li class="border-b border-zinc-600"><button @click="resetMembers" class="w-full text-left px-4 py-1">Reset</button></li>
@@ -209,7 +209,7 @@ export default defineComponent({
       </div>
     </div>
 
-    <div class="mt-8 flex w-full">
+    <div class="pt-8 flex w-full h-full">
       <div class="flex-none">
         <div class="h-14 pl-2 flex items-center text-xl">Mounts</div>
         <template
@@ -224,7 +224,7 @@ export default defineComponent({
         </template>
       </div>
 
-      <div class="flex-1 overflow-auto">
+      <div class="flex-1 overflow-x-auto">
         <table class="table-auto">
           <thead>
             <tr>

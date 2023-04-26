@@ -75,7 +75,7 @@ export default defineComponent({
 			ref="popoverRef" 
 			:class="{'hidden': !popoverShow, 'block': popoverShow}" 
 			role="tooltip" 
-			class="bg-zinc-800 border border-zinc-600 rounded z-10 p-2"
+			class="bg-zinc-800 border border-zinc-600 rounded z-10 p-2 absolute"
 		>
 			<img :src="mount.Icon" :alt="mount.Name" :title="mount.Name" class="w-[12rem] max-w-[12rem]">
 			<div class="text-base">{{ capitalizeName(mount.Name) }}</div>
