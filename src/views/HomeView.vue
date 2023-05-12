@@ -39,8 +39,9 @@ export default defineComponent({
   },
   data() {
     return {
-      selectedMembers: ref([]),
-      selectedExpansions: ref([]),
+      selectedMembers: [] as string[],
+      selectedExpansions: [] as string[],
+      raidGroupIds: ["25670721", "25670720", "25683726", "35494529", "25051671", "24042012", "28589679", "16412135"] as string[],
       neededMounts: [] as any,
       trackedMounts: TrackedMounts as MountArr,
       memberInfo: MemberInfo as MemberArr,
@@ -69,10 +70,12 @@ export default defineComponent({
     };
   },
   mounted() {
+    console.log(this.memberInfo);
     this.commonNeededMounts();
     this.neededMounts = this.sortNeededMounts(this.neededMounts);
   },
   beforeUpdate() {
+    console.log(this.selectedMembers);
     this.commonNeededMounts();
     this.neededMounts = this.sortNeededMounts(this.neededMounts);
   },
@@ -154,6 +157,11 @@ export default defineComponent({
         return false;
       }
     },
+    setRaidGroup() {
+      this.raidGroupIds.forEach((member) => {
+        this.selectedMembers.push(member)
+      });
+    }
   }
 });
 </script>
@@ -206,6 +214,13 @@ export default defineComponent({
             :value="`${expansion.ID}`"
           />
         </Dropdown>
+      </div>
+
+      <div class="ml-8">
+        <button 
+					@click="setRaidGroup"
+					class="border border-slate-100 rounded py-1 px-3 flex items-center"
+				>Select Raid Group</button>
       </div>
     </div>
 
