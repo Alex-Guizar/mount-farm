@@ -220,7 +220,7 @@ export default defineComponent({
         <button 
 					@click="setRaidGroup"
 					class="border border-slate-100 rounded py-1 px-3 flex items-center"
-				>Select Raid Group</button>
+				>Select UwU VIP</button>
       </div>
     </div>
 
