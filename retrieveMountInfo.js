@@ -47,6 +47,7 @@ const mountNames = [
 	{ exp: "EW", name: "bluefeather lynx", from: "trial", instance: "the minstrel's ballad: endsinger's aria" },
 	{ exp: "EW", name: "lynx of imperious wind", from: "trial", instance: "storm's crown" },
 	{ exp: "EW", name: "lynx of righteous fire", from: "trial", instance: "mount ordeals" },
+	{ exp: "EW", name: "lynx of fallen shadow", from: "trial", instance: "the voidcast dais" },
 	{ exp: "EW", name: "demi-phoinix", from: "raid", instance: "asphodelos: the fourth circle" },
 	{ exp: "EW", name: "sunforged", from: "raid", instance: "abyssos: the eighth circle" },
 ];
