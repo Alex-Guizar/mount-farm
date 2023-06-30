@@ -77,7 +77,7 @@ function updateMembers() {
           fcMembers[i].Minions = res.Minions;
           if (i < fcMembers.length - 1) {
             i++;
-            setTimeout(run, 1000);
+            setTimeout(run, 2000);
           } else {
             resolve(true);
           }
@@ -86,7 +86,7 @@ function updateMembers() {
           console.error(err);
           reject(err);
         });
-      }, 1000);
+      }, 2000);
     });
 
     finished.then((res) => {
