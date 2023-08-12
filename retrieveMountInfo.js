@@ -50,6 +50,7 @@ const mountNames = [
 	{ exp: "EW", name: "lynx of fallen shadow", from: "trial", instance: "the voidcast dais" },
 	{ exp: "EW", name: "demi-phoinix", from: "raid", instance: "asphodelos: the fourth circle" },
 	{ exp: "EW", name: "sunforged", from: "raid", instance: "abyssos: the eighth circle" },
+	{ exp: "EW", name: "megaloambystoma", from: "raid", instance: "anabaseios: the twelfth circle" },
 ];
 
 const blackList = [
