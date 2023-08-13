@@ -182,7 +182,7 @@ export default defineComponent({
     </div>
   </div>
 
-  <main class="pb-20 grow">
+  <main class="pb-20 grow leading-5">
     <div class="pt-8 flex">
       <div>
         <Dropdown describer="Select Members">

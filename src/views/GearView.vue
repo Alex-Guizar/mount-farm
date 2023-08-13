@@ -1,28 +1,84 @@
+<template>
+  <main class="pb-20 leading-5">
+		<div class="flex gap-8 mt-8">
+			<div>
+				<div>Filter Gear by Desynther</div>
+				<div class="flex flex-wrap justify-start gap-2 w-[15.125rem] mt-4">
+					<JobRadio v-for="job in jobs" :value="job" v-model="selectedJob"></JobRadio>
+				</div>
+			</div>
+
+			<div>
+				<label class="block" for="gear-ilvl">Minimum iLvl</label>
+				<input class="bg-transparent border border-slate-100 rounded p-2 mt-4 text-base" type="text" v-model="iLvl" name="iLvl" id="gear-ilvl" />
+			</div>
+
+			<div class="mt-9">
+				<button
+					@click="updateListings"
+					class="border border-slate-100 rounded-full py-2 px-3 text-base"
+				>Update Listings</button>
+			</div>
+		</div>
+		<div class="mt-8 flex w-full">
+			<div>
+				<table>
+					<tr
+						v-for="(gear, index) in fullGearListings"
+						:key="gear.ID"
+						:class="{ 'bg-zinc-800': index % 2 }"
+					>
+						<td class="w-[12rem] px-4 py-4 text-center">
+							<img :src="`https://xivapi.com${gear.IconHD}`" :alt="gear.Name" :title="gear.Name" class="w-20 mx-auto">
+							<div class="mt-4">{{ gear.Name }}</div>
+							<div>iLvl: {{ gear.LevelItem }}</div>
+						</td>
+						<td
+							class="text-center px-8 py-2 border-l border-r border-zinc-600 cursor-pointer"
+							v-for="listing in gear.listings"
+						>
+							{{ listing.pricePerUnit?.toLocaleString("en-US") }}<br />
+							{{ listing.worldName }}
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+  </main>
+</template>
+
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import LogoSVG from '@/assets/UwULogo.vue';
-import Dropdown from '@/components/Dropdown.vue';
-import Checkbox from '@/components/Checkbox.vue';
+import JobRadio from '@/components/JobRadio.vue';
 
 interface Listing {
 	pricePerUnit?: number;
 	worldName?: string;
 }
 
+interface Repairer {
+	Abbreviation_en: string;
+	Icon: string;
+	Name_en: string;
+}
+
 interface Gear {
-  Name: string;
+	ClassJobRepair: Repairer;
+	Desynth: number;
   ID: number;
-  ItemUICategory: object;
-	listings: Listing[];
 	Icon: string;
 	IconHD: string;
+	ItemKind: {
+		Name_en: string;
+	}
+	LevelItem: number;
+	listings: Listing[];
+	Name: string;
 };
 
 export default defineComponent({
   components: {
-    LogoSVG,
-		Dropdown,
-		Checkbox,
+		JobRadio,
   },
   data() {
     return {
@@ -32,6 +88,18 @@ export default defineComponent({
 			gearData: [] as Gear[],
 			fullGearListings: [] as Gear[],
 			trackedGear: [] as Gear[],
+			selectedJob: "",
+			jobs: [
+				"CRS",
+				"ALC",
+				"ARM",
+				"BSM",
+				"CRP",
+				"CUL",
+				"GSM",
+				"LTW",
+				"WVR",
+			]
     };
   },
   mounted() {
@@ -51,33 +119,63 @@ export default defineComponent({
 			const mustArr = [
 				{
 					"match": {
-						"ItemKind.Name_en": "Arms"
+						"IsUntradable": 0
 					}
 				},
+			];
+			
+			const mustNotArr = [
 				{
 					"match": {
-						"IsUntradable": 0
+						"Desynth": 0
 					}
 				}
 			];
 
 			const filterArr = [
-          {
-            "range": {
-              "LevelItem": {
-                "gt": this.iLvl
-              }
-            }
-          }
-        ]
+				{
+					"range": {
+						"LevelItem": {
+							"gt": this.iLvl
+						}
+					}
+				},
+				...(this.selectedJob !== "" && this.selectedJob !== "CRS" ? [
+					{
+						"match": {
+							"ClassJobRepair.Abbreviation_en": this.selectedJob
+						}
+					}
+				] : [])
+			];
+
+			const shouldArr = [
+				{
+					"match": {
+						"ItemKind.Name_en": "Arms"
+					}
+				},
+				{
+					"match": {
+						"ItemKind.Name_en": "Armor"
+					}
+				},
+				{
+					"match": {
+						"ItemKind.Name_en": "Tools"
+					}
+				},
+			]
 
 			const gearParams = {
 				"indexes": "item",
-				"columns": "Name,ItemKind.Name_en,ID,Icon,IconHD",
+				"columns": "Name,ItemKind.Name_en,ID,Icon,IconHD,Desynth,ClassJobRepair.Abbreviation_en,ClassJobRepair.Name_en,ClassJobRepair.Icon,LevelItem",
 				"body": {
 					"query": {
 						"bool": {
 							"must": mustArr,
+							"must_not": mustNotArr,
+							"should": shouldArr,
 							"filter": filterArr
 						}
 					},
@@ -108,14 +206,14 @@ export default defineComponent({
 				totalItems.push(gear.ID);
 			});
 
-			const maxItems = 100;
+			const maxItems = 99;
 			const region = "Crystal"; // alternative 'North-America'
 			const listings = "listings=5";
 			const fields = "fields=items.listings.pricePerUnit%2Citems.listings.worldName";
 			const pages = Math.ceil(totalItems.length / maxItems);
 			const passedItems = [];
 			for (let i = 0; i < pages; i++) {
-				passedItems.push(totalItems.slice(i*100, ((i+1)*100)).join(","));
+				passedItems.push(totalItems.slice(i*99, ((i+1)*99)).join(","));
 			}
 			const retrieveURLs: string[] = [];
 			passedItems.forEach((list) => {
@@ -146,7 +244,7 @@ export default defineComponent({
 		},
 		sort(arr: Gear[]) {
 			const sortedArr = arr.sort((a: any, b: any) => {
-				if (a.listings !== undefined && b.listings !== undefined) {
+				if (a.listings?.length && b.listings?.length) {
 					if (a.listings[0].pricePerUnit < b.listings[0].pricePerUnit) {
 						return -1;
 					}
@@ -164,43 +262,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<template>
-  <main class="pb-20">
-		<div class="mt-8 flex">
-			<div>
-				<input type="text" v-model="iLvl" name="iLvl" />
-			</div>
-
-			<div class="ml-10">
-				<button 
-					@click="updateListings"
-					class="border border-slate-100 rounded py-1 px-3 flex items-center"
-				>Update Listings</button>
-			</div>
-		</div>
-		<div class="mt-8 flex w-full">
-			<div>
-				<table>
-					<tr
-						v-for="(gear, index) in fullGearListings"
-						:key="gear.ID"
-						:class="{ 'bg-zinc-800': index % 2 }"
-					>
-						<td class="w-[8rem] py-4 text-center">
-							<img :src="`https://xivapi.com${gear.IconHD}`" :alt="gear.Name" :title="gear.Name" class="w-20 mx-auto">
-							{{ gear.Name }}
-						</td>
-						<td
-							class="text-center px-4 py-2 border-l border-r border-zinc-600 cursor-pointer"
-							v-for="listing in gear.listings"
-						>
-							{{ listing.pricePerUnit?.toLocaleString("en-US") }}<br />
-							{{ listing.worldName }}
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-  </main>
-</template>

@@ -140,7 +140,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <main class="pb-20">
+  <main class="pb-20 leading-5">
 		<div class="mt-8 flex">
 			<Dropdown :describer="selectedMember ? selectedMember.name : 'Select Members'">
 				<li
@@ -158,7 +158,7 @@ export default defineComponent({
 			<div class="ml-10">
 				<button 
 					@click="updateListings"
-					class="border border-slate-100 rounded py-1 px-3 flex items-center"
+					class="border border-slate-100 rounded-full py-1 px-3 flex items-center"
 				>Update Listings</button>
 			</div>
 		</div>

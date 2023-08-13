@@ -9,7 +9,7 @@ import LogoSVG from '@/assets/UwULogo.vue';
     <nav class="ml-auto">
       <RouterLink to="/">To Mount Tracking</RouterLink>
       <RouterLink to="/minions">To Minion Listings</RouterLink>
-      <RouterLink to="/gear">To Gear Listings</RouterLink>
+      <RouterLink to="/gear">Desynth Gear</RouterLink>
     </nav>
   </header>
   <RouterView />
