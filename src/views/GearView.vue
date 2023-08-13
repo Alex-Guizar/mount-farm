@@ -20,6 +20,8 @@
 				>Update Listings</button>
 			</div>
 		</div>
+		<div class="p-4" v-if="isLoading">Loading...</div>
+		<div class="p-4" v-if="errorMsg">{{ errorMsg }}</div>
 		<div class="mt-8 flex w-full">
 			<div>
 				<table>
@@ -35,6 +37,7 @@
 						</td>
 						<td
 							class="text-center px-8 py-2 border-l border-r border-zinc-600 cursor-pointer"
+							v-if="gear.listings && gear.listings.length"
 							v-for="listing in gear.listings"
 						>
 							{{ listing.pricePerUnit?.toLocaleString("en-US") }}<br />
@@ -89,6 +92,8 @@ export default defineComponent({
 			fullGearListings: [] as Gear[],
 			trackedGear: [] as Gear[],
 			selectedJob: "",
+			isLoading: false,
+			errorMsg: "",
 			jobs: [
 				"CRS",
 				"ALC",
@@ -113,6 +118,7 @@ export default defineComponent({
 			return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 		},
 		updateListings() {
+			this.isLoading = true;
 			this.retrieveGearData();
 		},
 		retrieveGearData() {
@@ -194,10 +200,13 @@ export default defineComponent({
 			.then((data) => {
 				const gearData = data.Results;
 				this.gearData = gearData;
+				this.fullGearListings = gearData;
 				this.retrieveGearListingData();
 			})
 			.catch((err) => {
 				console.log(err);
+				this.isLoading = false;
+				this.errorMsg = "Sorry, looks like item retrieval failed."
 			});
 		},
 		retrieveGearListingData() {
@@ -226,7 +235,10 @@ export default defineComponent({
 
 				const sortedGear = this.sort(gearWListings);
 				this.fullGearListings = sortedGear;
-				// this.fullGearListings = gearWListings;
+				this.isLoading = false;
+			}).catch(() => {
+				this.isLoading = false;
+				this.errorMsg = "Sorry, looks like price retrieval failed."
 			});
 		},
 		attachListings(listingsData: any) {
