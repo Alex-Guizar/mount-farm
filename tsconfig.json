@@ -1,6 +1,6 @@
 {
   "include": ["src/**/*.json"],
-  "files": [],
+  "exclude": ["dist", "node_modules", "public"],
   "references": [
     {
       "path": "./tsconfig.config.json"
@@ -13,9 +13,20 @@
     }
   ],
   "compilerOptions": {
-    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "baseUrl": ".",
     "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
     "target": "esnext",
     "module": "esnext",
-  }
+    "lib": ["DOM", "ESNext"],
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["vite/client", "node", "vitest/globals"],
+  },
 }

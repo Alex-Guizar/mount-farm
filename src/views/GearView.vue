@@ -24,11 +24,13 @@
 		<div class="p-4" v-if="errorMsg">{{ errorMsg }}</div>
 		<div class="mt-8 flex w-full">
 			<div>
-				<table>
+				<table class="gear-table">
 					<tr
 						v-for="(gear, index) in fullGearListings"
 						:key="gear.ID"
-						:class="{ 'bg-zinc-800': index % 2 }"
+						:class="{
+							'bg-zinc-800': index % 2
+						}"
 					>
 						<td class="w-[12rem] px-4 py-4 text-center">
 							<img :src="`https://xivapi.com${gear.IconHD}`" :alt="gear.Name" :title="gear.Name" class="w-20 mx-auto">
@@ -36,12 +38,20 @@
 							<div>iLvl: {{ gear.LevelItem }}</div>
 						</td>
 						<td
-							class="text-center px-8 py-2 border-l border-r border-zinc-600 cursor-pointer"
+							class="text-center w-[11rem] px-8 py-2 border-l border-r border-zinc-600 cursor-pointer"
 							v-if="gear.listings && gear.listings.length"
 							v-for="listing in gear.listings"
 						>
-							{{ listing.pricePerUnit?.toLocaleString("en-US") }}<br />
+							{{ listing.pricePerUnit?.toLocaleString("en-US") }} Gil<br />
 							{{ listing.worldName }}
+						</td>
+						<td
+							class="text-center w-[11rem] px-4 py-2 border-l border-r border-zinc-600 cursor-pointer"
+							v-else
+							v-for="index in 5"
+						>
+							Price<br />
+							World
 						</td>
 					</tr>
 				</table>
@@ -49,6 +59,18 @@
 		</div>
   </main>
 </template>
+
+<style>
+.gear-table tr {
+	/** transform: translateX(50%);
+	opacity: 0;
+	transition: all 1s ease-in-out; **/
+}
+.gear-table .slide-in {
+	transform: translateX(0);
+	opacity: 1;
+}
+</style>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
@@ -94,6 +116,9 @@ export default defineComponent({
 			selectedJob: "",
 			isLoading: false,
 			errorMsg: "",
+			testing: {
+				test: "Name"
+			} as Listing,
 			jobs: [
 				"CRS",
 				"ALC",
@@ -111,9 +136,22 @@ export default defineComponent({
 		
   },
   beforeUpdate() {
-    
+		console.log("beforeUpdate");
   },
+	updated() {
+		console.log("onUpdated");
+		const tableRows = document.querySelectorAll(".gear-table tr");
+		tableRows.forEach((ele, i) => {
+			console.log(ele);
+			//this.slideIn(ele, i)
+		});
+	},
   methods: {
+		returnTimeout(i: number) {
+			return setTimeout(() => {
+				return true;
+			}, (i + 5) * 200);
+		},
 		normalizeText(text: string) {
 			return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 		},
@@ -271,6 +309,11 @@ export default defineComponent({
 
 			return sortedArr;
 		},
+		slideIn(row: any, index: number) {
+			setTimeout(() => {
+				row.classList.add("slide-in");
+			}, (index + 5) * 100);
+		}
   }
 });
 </script>
