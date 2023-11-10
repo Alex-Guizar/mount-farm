@@ -6,9 +6,9 @@ import LoungeLogo from '@/assets/LoungeLogo.vue';
 
 <template>
   <header class="mx-[-2rem]">
-    <div class="relative w-full h-[22.75rem]">
-      <div class="absolute">
-        <img class="w-full" src="./assets/UwUFCHouse.png">
+    <div class="relative w-full h-[21.875rem]">
+      <div class="absolute w-full h-full">
+        <img class="max-w-[initial] h-[21.875rem] absolute left-1/2 translate-x-[-50%]" src="./assets/UwUFCHouse-2.0.png">
         <div class="absolute w-full h-full z-10 top-0 bg-gradient-to-b from-[#181818] via-[#18181840] to-[#181818]"></div>
       </div>
       <div class="flex items-center pt-4 gap-8 z-20">
