@@ -34,7 +34,7 @@ export default defineComponent({
 			totalScroll: 0,
 			perView: 1,
 			cellHeight: 128 as number,
-			autoScroll: 0 as number,
+			autoScroll: 0 as any,
       expansions: [
         {
           ID: 'ARR',

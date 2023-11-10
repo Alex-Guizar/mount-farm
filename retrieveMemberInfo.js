@@ -6,7 +6,8 @@ const honoraryMembers = [
   "Brockodile Dundee",
   "Brockness Monster",
   "Silk Redarse",
-  "Koko Zumaire"
+  "Koko Zumaire",
+  "Tronic Finklegruber"
 ]
 
 async function retrieveHonoraryData(charName) {

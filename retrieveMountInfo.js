@@ -48,6 +48,7 @@ const mountNames = [
 	{ exp: "EW", name: "lynx of imperious wind", from: "trial", instance: "storm's crown" },
 	{ exp: "EW", name: "lynx of righteous fire", from: "trial", instance: "mount ordeals" },
 	{ exp: "EW", name: "lynx of fallen shadow", from: "trial", instance: "the voidcast dais" },
+	{ exp: "EW", name: "lynx of abyssal grief", from: "trial", instance: "the abyssal fracture" },
 	{ exp: "EW", name: "demi-phoinix", from: "raid", instance: "asphodelos: the fourth circle" },
 	{ exp: "EW", name: "sunforged", from: "raid", instance: "abyssos: the eighth circle" },
 	{ exp: "EW", name: "megaloambystoma", from: "raid", instance: "anabaseios: the twelfth circle" },
