@@ -5,20 +5,29 @@ import LoungeLogo from '@/assets/LoungeLogo.vue';
 </script>
 
 <template>
-  <header class="flex items-center pt-4 gap-8">
-    <div class="flex items-center">
-      <span>
-        <LogoSVG />
-      </span>
-      <span class="-ml-4">
-        <LoungeLogo />
-      </span>
+  <header class="mx-[-2rem]">
+    <div class="relative w-full h-[22.75rem]">
+      <div class="absolute">
+        <img class="w-full" src="./assets/UwUFCHouse.png">
+        <div class="absolute w-full h-full z-10 top-0 bg-gradient-to-b from-[#181818] via-[#18181840] to-[#181818]"></div>
+      </div>
+      <div class="flex items-center pt-4 gap-8 z-20">
+        <div class="flex items-center">
+          <span>
+            <LogoSVG />
+          </span>
+          <span class="-ml-4">
+            <LoungeLogo />
+          </span>
+        </div>
+        <nav class="ml-auto">
+          <RouterLink to="/">To Mount Tracking</RouterLink>
+          <RouterLink to="/minions">To Minion Listings</RouterLink>
+          <RouterLink to="/gear">Desynth Gear</RouterLink>
+          <!-- <RouterLink to="/test">Testing</RouterLink> -->
+        </nav>
+      </div>
     </div>
-    <nav class="ml-auto">
-      <RouterLink to="/">To Mount Tracking</RouterLink>
-      <RouterLink to="/minions">To Minion Listings</RouterLink>
-      <RouterLink to="/gear">Desynth Gear</RouterLink>
-    </nav>
   </header>
   <RouterView />
 </template>
@@ -63,7 +72,7 @@ nav a:first-of-type {
   header {
     display: flex;
     place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    /*padding-right: calc(var(--section-gap) / 2);*/
   }
 
   .logo {
